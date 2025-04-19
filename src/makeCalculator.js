@@ -7,9 +7,11 @@ function makeCalculator() {
   const calculator = {
     result: 0,
     operate(operation, value) {
-      operation.call(this, value);
+      if (typeof operation === 'function') {
+        operation.call(this, value);
 
-      return this;
+        return this;
+      }
     },
 
     reset() {
